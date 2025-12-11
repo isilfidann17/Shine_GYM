@@ -1,0 +1,62 @@
+﻿@model SporSalonu_Odev.Models.Egitmen
+
+@{
+    ViewData["Title"] = "Eğitmen Ekle";
+}
+
+<div style="background-color: #f8a5c2; height: 90px; margin-bottom: 40px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0 rounded-4" style="margin-top: -20px;">
+                <div class="card-body p-5">
+
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="AdSoyad" class="control-label fw-bold text-secondary mb-1">Adı Soyadı</label>
+                            <input asp-for="AdSoyad" class="form-control form-control-lg rounded-pill border-2" placeholder="Örn: Elif Yılmaz" style="border-color: #ffeef2;" />
+                            <span asp-validation-for="AdSoyad" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Uzmanlik" class="control-label fw-bold text-secondary mb-1">Uzmanlık Alanı</label>
+                            <input asp-for="Uzmanlik" class="form-control form-control-lg rounded-pill border-2" placeholder="Örn: Pilates" style="border-color: #ffeef2;" />
+                            <span asp-validation-for="Uzmanlik" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="HizmetTurleri" class="control-label fw-bold text-secondary mb-1">Verdiği Hizmetler</label>
+                            <input asp-for="HizmetTurleri" class="form-control form-control-lg rounded-pill border-2" placeholder="Örn: Reformer, Hamile Pilatesi" style="border-color: #ffeef2;" />
+                            <span asp-validation-for="HizmetTurleri" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Musaitlik" class="control-label fw-bold text-secondary mb-1">Çalışma Saatleri</label>
+                            <input asp-for="Musaitlik" class="form-control form-control-lg rounded-pill border-2" placeholder="Örn: 09:00 - 17:00" style="border-color: #ffeef2;" />
+                            <span asp-validation-for="Musaitlik" class="text-danger small"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="FotoUrl" value="https://cdn-icons-png.flaticon.com/512/4140/4140047.png" />
+                        <input type="hidden" asp-for="Aciklama" value="Sizinle çalışmak için sabırsızlanıyorum! ✨" />
+
+                        <div class="d-grid gap-2 mt-5">
+                            <input type="submit" value="Kaydet 💖" class="btn btn-lg text-white fw-bold shadow-sm" style="background-color: #f8a5c2; border-radius: 50px;" />
+                            <a asp-action="Index" class="btn btn-light text-muted border-0 rounded-pill mt-2">İptal</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

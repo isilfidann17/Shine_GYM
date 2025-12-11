@@ -1,0 +1,55 @@
+﻿@model SporSalonu_Odev.Models.KayitModel
+
+@{
+    ViewData["Title"] = "Kayıt Ol";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header text-white text-center py-4"
+                     style="background: linear-gradient(to right, #da22ff, #9733ee); border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <h2 class="mb-0 fw-bold">✨ Aramıza Katıl</h2>
+                    <p class="mb-0 mt-2">Shine GYM Ailesinin Bir Parçası Ol!</p>
+                </div>
+
+                <div class="card-body p-5">
+                    <form asp-action="Kayit" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label text-secondary fw-bold">E-Posta Adresi</label>
+                            <input asp-for="Email" class="form-control form-control-lg" placeholder="mail@ornek.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Sifre" class="form-label text-secondary fw-bold">Şifre Belirle</label>
+                            <input asp-for="Sifre" class="form-control form-control-lg" type="password" placeholder="******" />
+                            <span asp-validation-for="Sifre" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="SifreTekrar" class="form-label text-secondary fw-bold">Şifreni Tekrar Gir</label>
+                            <input asp-for="SifreTekrar" class="form-control form-control-lg" type="password" placeholder="******" />
+                            <span asp-validation-for="SifreTekrar" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-lg text-white"
+                                    style="background: linear-gradient(to right, #da22ff, #9733ee);">
+                                Kaydı Tamamla 🚀
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <span class="text-muted">Zaten hesabın var mı?</span>
+                        <a asp-action="Giris" class="fw-bold text-decoration-none" style="color: #9733ee;">Giriş Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

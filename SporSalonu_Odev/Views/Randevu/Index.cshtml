@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SporSalonu_Odev.Models.Randevu>
+
+@{
+    ViewData["Title"] = "Randevularım";
+}
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold" style="color: #5d4a52;">📅 Randevularım</h2>
+        <p class="text-muted">Gelecek derslerini buradan takip edebilirsin.</p>
+    </div>
+
+    @if (!Model.Any())
+    {
+        // HİÇ RANDEVUSU YOKSA BU ÇIKACAK
+        <div class="alert alert-light text-center shadow-sm p-5 rounded-4 border-0">
+            <h1 class="display-1">🤷‍♀️</h1>
+            <h4 class="mt-3">Henüz hiç randevun yok.</h4>
+            <p class="text-muted">Haftalık programa göz atıp kendine uygun bir ders seçmeye ne dersin?</p>
+            <a asp-controller="SalonHizmeti" asp-action="Program" class="btn btn-lg text-white rounded-pill mt-3 px-5" style="background-color: #f8a5c2;">
+                Programı İncele
+            </a>
+        </div>
+    }
+    else
+    {
+        
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body d-flex align-items-center p-4">
+
+                            <div class="date-box text-center me-4 rounded-3 p-3 text-white d-flex flex-column justify-content-center"
+                                 style="background-color: #f8a5c2; min-width: 90px; height: 90px;">
+                                <h2 class="m-0 fw-bold display-6">@item.TarihSaat.Day</h2> <small class="text-uppercase fw-bold" style="font-size: 0.7rem;">@item.TarihSaat.ToString("MMMM")</small>
+                            </div>
+
+                            <div class="flex-grow-1">
+                                <h5 class="fw-bold text-dark mb-1">@item.Hizmet?.HizmetAdi</h5>
+
+                                <p class="text-dark mb-2 fw-bold" style="font-size: 0.9rem;">
+                                    🗓️ @item.TarihSaat.ToString("dd MMMM yyyy dddd") <br> ⏰ Saat: @item.TarihSaat.ToString("HH:mm")
+                                </p>
+
+                                <p class="text-muted mb-0 small">
+                                    <i class="bi bi-person-fill text-primary"></i> @item.Egitmen?.AdSoyad
+                                </p>
+                            </div>
+
+                            <div class="ms-3">
+                                <form asp-action="Iptal" method="post" onsubmit="return confirm('Bu randevuyu iptal etmek istediğine emin misin?');">
+                                    <input type="hidden" name="id" value="@item.Id" />
+                                    <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 shadow-sm" title="Randevuyu İptal Et">
+                                        <i class="bi bi-trash"></i> İptal
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <a asp-controller="SalonHizmeti" asp-action="Program" class="btn btn-outline-secondary rounded-pill">
+                + Yeni Randevu Al
+            </a>
+        </div>
+    }
+</div>

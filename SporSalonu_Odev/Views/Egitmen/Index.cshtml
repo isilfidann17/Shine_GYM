@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SporSalonu_Odev.Models.Egitmen>
+
+@{
+    ViewData["Title"] = "Eğitmen Yönetimi";
+}
+
+<div style="background-color: #f8a5c2; padding-top: 120px; padding-bottom: 30px; margin-top: -50px; margin-bottom: 30px; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;">
+    <div class="container d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="text-white fw-bold m-0" style="text-shadow: 0 2px 5px rgba(0,0,0,0.1);">📋 Eğitmen Listesi</h2>
+            <p class="text-white m-0 small opacity-75">Sisteme kayıtlı antrenörleri buradan yönetebilirsin.</p>
+        </div>
+        <a asp-action="Create" class="btn btn-light text-primary fw-bold shadow px-4 rounded-pill">
+            <i class="bi bi-plus-lg"></i> Yeni Eğitmen Ekle
+        </a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+        <div class="card-body p-0">
+            <table class="table table-hover align-middle mb-0">
+                <thead style="background-color: #ffeef2;">
+                    <tr>
+                        <th class="p-3 text-secondary ps-4">Adı Soyadı</th>
+                        <th class="p-3 text-secondary">Uzmanlık</th>
+                        <th class="p-3 text-secondary">Hizmet Türleri</th>
+                        <th class="p-3 text-secondary">Müsaitlik</th>
+                        <th class="p-3 text-end pe-4">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="p-3 ps-4 fw-bold text-dark">@item.AdSoyad</td>
+                            <td class="p-3"><span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 rounded-pill">@item.Uzmanlik</span></td>
+                            <td class="p-3 small text-muted">@item.HizmetTurleri</td>
+                            <td class="p-3 text-dark fw-bold"><i class="bi bi-clock text-warning me-1"></i>@item.Musaitlik</td>
+                            <td class="p-3 text-end pe-4">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-light text-warning border fw-bold me-1">Düzenle</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-light text-danger border fw-bold">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (!Model.Any())
+            {
+                <div class="text-center p-5">
+                    <p class="text-muted">Henüz hiç eğitmen eklenmemiş.</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

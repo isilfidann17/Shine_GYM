@@ -1,0 +1,96 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    
+    --ana-pembe: #f8a5c2; 
+    --gradient-baslangic: #ffbbc9; 
+    --gradient-bitis: #f48fb1; 
+    --yazi-koyu: #5d4a52; 
+    --arkaplan-beyaz: #fffbfc; 
+}
+
+body {
+    background-color: var(--arkaplan-beyaz) !important;
+    color: var(--yazi-koyu) !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    color: var(--ana-pembe) !important;
+    font-weight: 700;
+}
+
+a {
+    color: var(--ana-pembe);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    a:hover {
+        color: var(--gradient-bitis);
+    }
+
+
+.card {
+    border: none !important;
+    box-shadow: 0 8px 20px rgba(248, 165, 194, 0.15) !important; 
+    background-color: white !important;
+    border-radius: 15px !important;
+}
+
+
+.card-header,
+[style*="linear-gradient"],
+.btn-primary {
+    background: linear-gradient(135deg, var(--gradient-baslangic), var(--gradient-bitis)) !important;
+    border: none !important;
+    color: white !important;
+}
+
+
+.table thead[style*="background-color"] {
+    background-color: var(--ana-pembe) !important;
+}
+
+
+.btn-primary {
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 50px; 
+    box-shadow: 0 4px 10px rgba(244, 143, 177, 0.3);
+}
+
+    .btn-primary:hover {
+        transform: translateY(-2px); 
+        box-shadow: 0 6px 15px rgba(244, 143, 177, 0.5);
+    }
+
+.btn-outline-secondary, .btn-outline-primary, .btn-outline-danger {
+    border-radius: 50px;
+    border-width: 2px;
+}
+
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1px solid #eddce2 !important;
+    padding: 12px;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--ana-pembe) !important;
+        box-shadow: 0 0 0 0.25rem rgba(248, 165, 194, 0.25) !important;
+    }
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--yazi-koyu) !important;
+    font-weight: 600;
+}
+
+    .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link.active {
+        color: var(--ana-pembe) !important;
+    }

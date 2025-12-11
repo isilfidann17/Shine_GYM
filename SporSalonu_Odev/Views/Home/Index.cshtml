@@ -1,0 +1,132 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<div style="position: relative; height: 95vh; width: 100%; overflow: hidden; margin-top: -1.5rem;">
+
+    <img src="/img/arka.jpg"
+         alt="Shine GYM Arka Plan"
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(248, 165, 194, 0.4), rgba(255, 255, 255, 0.0)); z-index: 1;"></div>
+
+
+    <div class="container h-100 d-flex align-items-center justify-content-center text-center" style="position: relative; z-index: 2; padding-top: 80px;">
+
+        <div class="p-5 glass-box">
+
+            <h1 class="display-3 fw-bolder mb-2 text-white title-shadow">
+                SHINE GYM
+            </h1>
+            <h2 class="fs-3 fw-light mb-4 text-white">
+                Senin Işıltın, Senin Gücün. ✨
+            </h2>
+
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                @if (!User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Hesap" asp-action="Kayit" class="btn btn-light btn-lg px-5 py-3 fw-bold shadow pink-btn">
+                        Hemen Katıl 💖
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Randevu" asp-action="Index" class="btn btn-light btn-lg px-5 py-3 fw-bold shadow pink-btn">
+                        Antrenmana Başla 📅
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="position: relative; z-index: 10; margin-top: -100px; padding-bottom: 50px;">
+    <div class="row justify-content-center text-center g-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="card-box p-5 bg-white h-100 transform-hover">
+                <div class="icon-circle mb-4">
+                    <i class="bi bi-magic fs-2 text-white"></i>
+                </div>
+                <h3 class="h4 fw-bold" style="color: #5d4a52;">Dreamy Atmosphere</h3>
+                <p class="text-muted">Sıradan spor salonlarını unut. Burası senin motivasyon dünyan.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card-box p-5 bg-white h-100 transform-hover">
+                <div class="icon-circle mb-4">
+                    <i class="bi bi-heart-pulse fs-2 text-white"></i>
+                </div>
+                <h3 class="h4 fw-bold" style="color: #5d4a52;">Kadınlara Özel Alan</h3>
+                <p class="text-muted">Rahat, güvenli ve seni anlayan bir toplulukla spor yap.</p>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card-box p-5 bg-white h-100 transform-hover">
+                <div class="icon-circle mb-4">
+                    <i class="bi bi-stars fs-2 text-white"></i>
+                </div>
+                <h3 class="h4 fw-bold" style="color: #5d4a52;">Premium Deneyim</h3>
+                <p class="text-muted">Sadece spor değil, ruhunu besleyecek bir yaşam tarzı.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+     
+    .title-shadow {
+        text-shadow: 0 4px 15px rgba(248, 165, 194, 0.9);
+    }
+
+    
+    .glass-box {
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(12px);
+        border-radius: 40px; 
+        border: 1px solid rgba(255,255,255,0.5);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        max-width: 800px;
+    }
+
+    
+    .pink-btn {
+        color: #f8a5c2 !important;
+        border-radius: 50px;
+    }
+
+        .pink-btn:hover {
+            background-color: #fff0f5 !important;
+            transform: translateY(-3px);
+        }
+
+    
+    .card-box {
+        border-radius: 35px; 
+        box-shadow: 0 10px 30px rgba(248, 165, 194, 0.2);
+        border: none;
+    }
+
+    .icon-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 90px; 
+        height: 90px; 
+        background: linear-gradient(135deg, #ffbbc9, #f48fb1); 
+        border-radius: 50%; 
+        box-shadow: 0 8px 20px rgba(244, 143, 177, 0.4); 
+    }
+
+    
+    .transform-hover {
+        transition: all 0.3s ease;
+    }
+
+        .transform-hover:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(248, 165, 194, 0.3);
+        }
+</style>

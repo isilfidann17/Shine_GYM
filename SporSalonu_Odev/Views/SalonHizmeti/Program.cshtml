@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SporSalonu_Odev.Models.Seans>
+
+@{
+    ViewData["Title"] = "Ders Programı";
+    
+    var saatler = new List<string> { "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00" };
+    var gunler = new List<string> { "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar" };
+}
+
+<div class="text-center py-5 position-relative" style="background-color: #f8a5c2; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px;">
+    <h1 class="display-4 fw-bold text-white">📅 Haftalık Ders Programı</h1>
+
+    @if (User.Identity?.Name == "G221210064@sakarya.edu.tr")
+    {
+        <a asp-action="SeansEkle" class="btn btn-light text-primary fw-bold rounded-pill px-4 mt-3 shadow-sm">
+            <i class="bi bi-plus-circle"></i> Tabloya Yeni Ders Ekle
+        </a>
+    }
+</div>
+
+<div class="container mt-5">
+    <div class="table-responsive shadow-lg rounded-4">
+        <table class="table table-bordered table-hover text-center align-middle mb-0 bg-white">
+            <thead class="text-white" style="background-color: #5d4a52;">
+                <tr>
+                    <th class="p-3" style="width: 10%;">SAAT</th>
+                    @foreach (var gun in gunler)
+                    {
+                        <th class="p-3">@gun.ToUpper()</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var saat in saatler)
+                {
+                    <tr>
+                        <td class="fw-bold bg-light text-secondary">@saat</td>
+
+                        @foreach (var gun in gunler)
+                        {
+                            
+                            var ders = Model.FirstOrDefault(s => s.Gun == gun && s.Saat == saat);
+
+                            if (ders != null)
+                            {
+                                
+                                <td class="bg-pink-light position-relative">
+                                    <strong>@ders.Hizmet?.HizmetAdi</strong><br>
+                                    <small class="text-muted">@ders.Egitmen?.AdSoyad</small><br>
+
+                                    <a asp-controller="Randevu" asp-action="Create"
+                                       asp-route-dersAdi="@ders.Hizmet?.HizmetAdi"
+                                       asp-route-gun="@ders.Gun"
+                                       asp-route-saat="@ders.Saat"
+                                       class="btn btn-sm btn-outline-danger rounded-pill mt-2">
+                                        Randevu Al >
+                                    </a>
+
+                                    @if (User.Identity?.Name == "G221210064@sakarya.edu.tr")
+                                    {
+                                        <a asp-action="SeansSil" asp-route-id="@ders.SeansId" class="btn btn-sm btn-danger position-absolute top-0 end-0 m-1 py-0 px-1" title="Dersi Sil">x</a>
+                                    }
+                                </td>
+                            }
+                            else
+                            {
+                                
+                                <td><span class="text-muted opacity-25">-</span></td>
+                            }
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .bg-pink-light {
+        background-color: #fff0f5 !important;
+        transition: 0.3s;
+    }
+
+        .bg-pink-light:hover {
+            background-color: #f8a5c2 !important;
+            color: white;
+        }
+
+            .bg-pink-light:hover a.btn-outline-danger {
+                background-color: white;
+                color: #f8a5c2;
+                border: none;
+            }
+</style>

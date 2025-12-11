@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Randevu Onaylandı";
+}
+
+<div class="container text-center mt-5">
+    <div class="card shadow-lg border-0 rounded-4 p-5 mx-auto" style="max-width: 600px;">
+
+        <div class="mb-4">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+        </div>
+
+        <h1 class="fw-bold mb-3" style="color: #5d4a52;">Tebrikler! 🎉</h1>
+        <h4 class="text-muted mb-4">Randevunuz başarıyla oluşturuldu.</h4>
+
+        <div class="alert alert-light border border-success">
+            <p class="mb-0">Eğitmenimiz sizi bekliyor olacak. Lütfen dersten 10 dakika önce salonda olunuz. ✨</p>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-lg text-white rounded-pill fw-bold" style="background-color: #f8a5c2;">Anasayfaya Dön</a>
+            <a asp-controller="SalonHizmeti" asp-action="Program" class="btn btn-outline-secondary rounded-pill">Programı İncele</a>
+        </div>
+
+    </div>
+</div>

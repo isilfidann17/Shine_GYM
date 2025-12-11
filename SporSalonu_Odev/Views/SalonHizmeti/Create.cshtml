@@ -1,0 +1,41 @@
+﻿@model SporSalonu_Odev.Models.SalonHizmeti
+
+@{
+    ViewData["Title"] = "Yeni Hizmet Ekle";
+}
+
+<div style="background-color: #f8a5c2; height: 90px; margin-bottom: 40px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"></div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4" style="margin-top: -20px;">
+                <div class="card-body p-5">
+                    <h3 class="fw-bold text-center mb-4" style="color: #5d4a52;">Yeni Hizmet Tanımla ✨</h3>
+
+                    <form asp-action="Create">
+                        <div class="form-group mb-3">
+                            <label asp-for="HizmetAdi" class="fw-bold text-secondary small">Hizmet Adı</label>
+                            <input asp-for="HizmetAdi" class="form-control rounded-pill" placeholder="Örn: Yoga Seansı" />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="SureDakika" class="fw-bold text-secondary small">Süre (Dakika)</label>
+                            <input asp-for="SureDakika" class="form-control rounded-pill" type="number" placeholder="Örn: 45" />
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Ucret" class="fw-bold text-secondary small">Ücret (TL)</label>
+                            <input asp-for="Ucret" class="form-control rounded-pill" type="number" placeholder="Örn: 250" />
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-lg text-white fw-bold rounded-pill" style="background-color: #f8a5c2;">Kaydet</button>
+                            <a asp-action="Index" class="btn btn-link text-muted mt-2">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

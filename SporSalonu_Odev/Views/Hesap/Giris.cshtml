@@ -1,0 +1,54 @@
+﻿@model SporSalonu_Odev.Models.GirisModeli
+
+@{
+    ViewData["Title"] = "Shine GYM Giriş";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header text-white text-center py-4"
+                     style="background: linear-gradient(to right, #9733ee); border-top-left-radius: 10px; border-top-right-radius: 10px;">
+                    <h2 class="mb-0 fw-bold">✨ Shine GYM Giriş</h2>
+                </div>
+
+                <div class="card-body p-5">
+                    <form asp-action="Giris" method="post">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3 fw-bold"></div>
+
+                        <div class="mb-4">
+                            <label asp-for="Email" class="form-label fs-5 text-secondary">E-Posta Adresiniz</label>
+                            <input asp-for="Email" class="form-control form-control-lg" placeholder="mail@ornek.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Sifre" class="form-label fs-5 text-secondary">Parola</label>
+                            <input asp-for="Sifre" class="form-control form-control-lg" type="password" placeholder="******" />
+                            <span asp-validation-for="Sifre" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4 form-check">
+                            <input class="form-check-input" asp-for="BeniHatirla" style="transform: scale(1.2);" /> <label class="form-check-label ms-2 fs-6" asp-for="BeniHatirla">Beni Hatırla</label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-lg text-white"
+                                    style="background: linear-gradient(to right, #da22ff, #9733ee); font-size: 1.2rem;">
+                                Giriş Yap 
+                            </button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4 pt-3 border-top">
+                        <span class="text-muted fs-6">Henüz üye değil misin?</span><br />
+                        <a asp-action="Kayit" class="fw-bold text-decoration-none fs-5" style="color: #9733ee;">
+                            ✨ Hemen Kayıt Ol
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
